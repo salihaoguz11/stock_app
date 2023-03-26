@@ -5,13 +5,15 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { Formik } from "formik";
+
+import useAuthCall from "../hooks/useAuthCall";
+import LoginForm, { loginScheme } from "../components/LoginForm";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { currentUser, error } = useSelector((state) => state?.auth);
+  const { login } = useAuthCall();
 
   return (
     <Container maxWidth="lg">
@@ -49,6 +51,17 @@ const Login = () => {
           >
             Login
           </Typography>
+
+          <Formik
+            initialValues={{ email: "", password: "" }}
+            validationSchema={loginScheme}
+            onSubmit={(values, actions) => {
+              login(values);
+              actions.resetForm();
+              actions.setSubmitting(false);
+            }}
+            component={(props) => <LoginForm {...props} />}
+          ></Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
