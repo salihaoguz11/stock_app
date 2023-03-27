@@ -1,10 +1,12 @@
 import Typography from "@mui/material/Typography";
 import { Button, Grid } from "@mui/material";
 import { useEffect } from "react";
+import useStockCall from "../hooks/useStockCall";
 const Firms = () => {
-  // useEffect(() => {
-  // getStockData("firms")
-  // }, [])
+  const { getStockData } = useStockCall();
+  useEffect(() => {
+    getStockData("firms");
+  }, []);
   return (
     <div>
       <Typography variant="h4" color="error" mb={3}>
