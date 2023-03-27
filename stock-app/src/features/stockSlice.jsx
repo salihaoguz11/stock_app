@@ -19,7 +19,8 @@ const stockSlice = createSlice({
       state.error = false;
     },
     getSuccess: (state, { payload: { data, url } }) => {
-      (state.loading = false), (state[url] = data);
+      state.loading = false;
+      state[url] = data;
     },
     // getSuccessSales: (state, { payload }) => {
     //   state.loading = false
