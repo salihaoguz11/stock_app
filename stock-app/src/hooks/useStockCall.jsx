@@ -40,9 +40,9 @@ const useStockCall = () => {
     }
   };
   const putStockData = async (url, info) => {
+    dispatch(fetchStart());
     try {
-      dispatch(fetchStart());
-      await axiosWithToken.post(`stock/${url}/${info.id}/`, info);
+      await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
       toastSuccessNotify(`${url} succesfully updated`);
       getStockData(url);
     } catch (error) {

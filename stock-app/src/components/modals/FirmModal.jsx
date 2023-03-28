@@ -7,14 +7,19 @@ import { Button } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
 
 export default function FirmModal({ open, handleClose, info, setInfo }) {
-  const { postStockData } = useStockCall();
+  const { postStockData, putStockData } = useStockCall();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    postStockData("firms", info);
+    if (info.id) {
+      putStockData("firms", info);
+    } else {
+      postStockData("firms", info);
+    }
+
     handleClose();
     setInfo({ name: "", phone: "", address: "", image: "" });
   };
