@@ -14,11 +14,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { btnStyle } from "../styles/globalStyle";
 
 const Products = () => {
   const { getStockData } = useStockCall();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
+
+  const { deleteStockData } = useStockCall();
 
   const [info, setInfo] = useState({
     name: "",
@@ -76,7 +80,12 @@ const Products = () => {
                 <TableCell align="right">{pro.brand}</TableCell>
                 <TableCell align="right">{pro.name}</TableCell>
                 <TableCell align="right">{pro.stock}</TableCell>
-                <TableCell align="right"></TableCell>
+                <TableCell align="right">
+                  <DeleteForeverIcon
+                    sx={btnStyle}
+                    onClick={() => deleteStockData("products", pro.id)}
+                  />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
