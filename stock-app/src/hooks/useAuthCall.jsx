@@ -14,7 +14,7 @@ import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const BASE_URL = "https://stockapi-server.onrender.com";
+  const BASE_URL = "https://stockapi-server.onrender.com/";
   const login = async (userInfo) => {
     dispatch(fetchStart());
     try {
@@ -46,7 +46,7 @@ const useAuthCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        `${BASE_URL}/account/register/`,
+        `${BASE_URL}account/register/`,
         userInfo
       );
       dispatch(registerSuccess(data));
