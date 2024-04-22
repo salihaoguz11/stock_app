@@ -5,11 +5,11 @@ const useAxios = () => {
   const { token } = useSelector((state) => state.auth);
 
   const axiosPublic = axios.create({
-    baseURL: "https://12131.fullstack.clarusway.com/",
+    baseURL: "https://stockapi-server.onrender.com",
   });
 
   const axiosWithToken = axios.create({
-    baseURL: "https://12131.fullstack.clarusway.com/",
+    baseURL: "https://stockapi-server.onrender.com",
     headers: { Authorization: `Token ${token}` },
   });
 
