@@ -14,7 +14,7 @@ import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const BASE_URL = "https://12131.fullstack.clarusway.com/";
+  const BASE_URL = "https://stockapi-server.onrender.com";
   const login = async (userInfo) => {
     dispatch(fetchStart());
     try {
