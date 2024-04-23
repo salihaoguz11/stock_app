@@ -59,9 +59,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const [products, categories, brands] = await Promise.all([
-        axiosWithToken.get("products/"),
-        axiosWithToken.get("categories/"),
-        axiosWithToken.get("brands/"),
+        axiosWithToken.get("/stock/products/"),
+        axiosWithToken.get("/stock/categories/"),
+        axiosWithToken.get("/stock/brand"),
       ]);
       dispatch(
         getProCatBrandSuccess([products?.data, categories?.data, brands?.data])
